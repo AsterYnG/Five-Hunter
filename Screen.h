@@ -9,6 +9,8 @@ class Screen
 private :
 	RenderWindow* window;
 	Clock time;
+	float currentFrame;
+	float animationSpeed;
 public :
 	Screen();
 	~Screen();
@@ -16,6 +18,8 @@ public :
 	void createWindow(int width, int height);
 	void changeView(View &view);
 	float getTime();
+	void setFrame(float time);
+	int getFrame();
 private:
 	
 };

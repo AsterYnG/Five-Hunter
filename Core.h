@@ -6,8 +6,8 @@ class Core
 private:
 	void draw(); // draw objects
 	void logic();
-	void moveEvent();
-	void viewRender(float x  , float y);
+	void moveEvent(); // Movement logic
+	void viewRender(float x  , float y); // set camera position etc.
 public:
 	void Render(); // With loop in core
 	Core();

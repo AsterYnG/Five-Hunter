@@ -24,7 +24,7 @@ Core::Core()
 	screen.createWindow(800, 600);
 	windowHandle = screen.getWindowHandle();
 	player.playerSprite.setPosition(map.player_coords[0].getPosition().x, map.player_coords[0].getPosition().y);
-	view.setCenter(map.player_coords[0].getPosition().x, map.player_coords[0].getPosition().y);
+	view.setCenter(player.getPlayerCoords());
 	
 	
 }
@@ -48,27 +48,27 @@ void Core::logic()
 
 void Core::moveEvent()
 {
+
 	float time = screen.getTime();
+	screen.setFrame(time);
 	if (Keyboard::isKeyPressed(Keyboard::W))
 	{
-		player.playerSprite.move(0, -time * player.getSpeed());
-		view.move(0, -time * player.getSpeed());
+		player.moveUp(time, view,screen.getFrame());
 	}
 	if (Keyboard::isKeyPressed(Keyboard::S))
 	{
-		player.playerSprite.move(0, time * player.getSpeed());
-		view.move(0, time * player.getSpeed());
+		player.moveDown(time, view  , screen.getFrame());
 	}
 	if (Keyboard::isKeyPressed(Keyboard::D))
 	{
-		player.playerSprite.move(time * player.getSpeed(), 0);
-		view.move(time * player.getSpeed(), 0);
+		player.moveRight(time, view, screen.getFrame());
 	}
 	if (Keyboard::isKeyPressed(Keyboard::A))
 	{
-		player.playerSprite.move(-time * player.getSpeed(), 0);
-		view.move(-time * player.getSpeed(), 0);
+		player.moveLeft(time, view, screen.getFrame());
 	}
+	
+	player.checkRotation();
 }
 
 void Core::viewRender(float x, float y)
