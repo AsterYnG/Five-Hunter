@@ -15,6 +15,8 @@ void Player::Init()
 	playerSprite.setOrigin(15, 20);
 	speed = 100;
 	isMoving = false;
+	collision = false;
+	dir = Direction::Down;
 	
 }
 
@@ -39,10 +41,12 @@ Player::Player():GameObject()
 
 void Player::moveLeft(float time, View& view, int frame)
 {
-	playerSprite.move(-time * speed, 0);
-	view.move(-time * speed, 0);
-	dir =Direction::Left;
 	isMoving = true;
+	playerSprite.move(-time * speed, 0);
+	
+	if (!collision) { dir = Direction::Left; }
+	
+
 	for (int i = 0; i < 6; i++)
 	{
 		if (frame == i)
@@ -55,8 +59,8 @@ void Player::moveLeft(float time, View& view, int frame)
 void Player::moveRight(float time, View& view, int frame)
 {
 	playerSprite.move(time * speed, 0);
-	view.move(time * speed, 0);
-	dir = Direction::Right;
+	
+	if (!collision) { dir = Direction::Right; }
 	for (int i = 0 ; i < 6 ; i++)
 	{
 		if (frame == i)
@@ -70,8 +74,8 @@ void Player::moveRight(float time, View& view, int frame)
 void Player::moveUp(float time, View& view, int frame)
 {
 	playerSprite.move(0, -time * speed);
-	view.move(0, -time * speed);
-	dir = Direction::Up;
+	
+	if (!collision) { dir = Direction::Up; }
 	isMoving = true;
 	for (int i = 0; i < 6; i++)
 	{
@@ -85,8 +89,8 @@ void Player::moveUp(float time, View& view, int frame)
 void Player::moveDown(float time, View& view, int frame)
 {
 	playerSprite.move(0, time * speed);
-	view.move(0, time * speed);
-	dir = Direction::Down;
+	
+	if (!collision) { dir = Direction::Down; }
 	isMoving = true;
 	for (int i = 0; i < 6; i++)
 	{
@@ -117,3 +121,32 @@ void Player::checkRotation()
 		if (dir == Direction::Down) playerSprite.setTextureRect(IntRect(92, 0, 32, 42));
 	}
 }
+
+void Player::setCollisionFlag(bool flag)
+{
+	collision = flag;
+}
+
+void Player::collisionMovement()
+{
+	if(dir == Left)
+	{
+		playerSprite.setPosition(playerSprite.getPosition().x + 2, playerSprite.getPosition().y);
+	}
+	if (dir == Right)
+	{
+		playerSprite.setPosition(playerSprite.getPosition().x -2, playerSprite.getPosition().y);
+	}
+	if (dir == Up)
+	{
+		playerSprite.setPosition(playerSprite.getPosition().x, playerSprite.getPosition().y +2);
+	}
+	if (dir == Down)
+	{
+		playerSprite.setPosition(playerSprite.getPosition().x, playerSprite.getPosition().y -2 );
+	}
+}
+
+
+
+

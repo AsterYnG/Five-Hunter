@@ -12,7 +12,7 @@ TileMap::TileMap()
             {
                 const auto& objectLayer = layer->getLayerAs<tmx::ObjectGroup>();
                 const auto& objects = objectLayer.getObjects();
-                if(objectLayer.getName() == "collisions")
+                if(objectLayer.getName() == "collision")
                 {
                     for (const auto& object : objects)
                     {

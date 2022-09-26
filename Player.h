@@ -23,6 +23,7 @@ public:
 private :
 	float speed;
 	bool isMoving;
+	bool collision;
 	void isHeroMoving();
 public:
 	void Init() override;
@@ -34,6 +35,9 @@ public:
 	void moveUp(float time, View& view, int frame);
 	void moveDown(float time, View& view, int frame);
 	void checkRotation();
+	void setCollisionFlag(bool flag);
+	void collisionMovement();
+	
 	
 };
 

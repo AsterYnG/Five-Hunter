@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GJK.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Screen.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="..\..\..\..\..\Games\tmxlite-master\SFMLExample\src\SFMLOrthogonalLayer.hpp" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GJK.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="TileMap.h" />

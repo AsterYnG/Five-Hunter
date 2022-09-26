@@ -9,6 +9,7 @@ public:
 	~TileMap();
 	std::vector<Object> player_coords; // player coords
 	std::vector <Object> coll; //collisions
+	
 private:
 
 

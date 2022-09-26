@@ -7,7 +7,7 @@ Screen::Screen()
 	window = new RenderWindow;
 	currentFrame = 0;
 	animationSpeed = 10;
-
+	timePerFrame = 0;
 }
 
 Screen::~Screen()
@@ -46,9 +46,14 @@ void Screen::changeView(View& view)
 	window->setView(view);
 }
 
+void Screen::updateTime()
+{
+	timePerFrame = time.restart().asSeconds();
+}
+
 float Screen::getTime()
 {
-	return time.restart().asSeconds();
+	return timePerFrame;
 }
 
 void Screen::setFrame(float time)
