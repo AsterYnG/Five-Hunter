@@ -10,7 +10,7 @@ private:
 	void moveEvent(); // Movement logic
 	void collission();
 	
-	void viewRender(float x  , float y); // set camera position etc.
+	void viewRender(); // set camera position etc.
 
 	std::vector<vec2> getVerticesObj(Object& o);
 	std::vector<vec2> getVerticesPl(sf::Sprite& p);

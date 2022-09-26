@@ -13,11 +13,13 @@ void Core::Render()
 		screen.updateTime();
 		/*player.moveUp(screen.getTime() , view , screen.getFrame());*/
 		logic();
+		viewRender();
 		screen.changeView(view);
 		
 		windowHandle->clear();
 		draw();
 		windowHandle->display();
+		
 	}
 }
 
@@ -109,7 +111,7 @@ void Core::collission()
 		if (vec2::gjk(playerVertices , objectVertices) )
 		{
 			player.setCollisionFlag(true);
-			player.collisionMovement();
+			player.collisionMovement(time);
 		}
 		else
 		{
@@ -125,9 +127,9 @@ void Core::collission()
 
 
 
-void Core::viewRender(float x, float y)
+void Core::viewRender()
 {
-	
+	view.setCenter(map.cameraPositions[0].getPosition().x , map.cameraPositions[0].getPosition().y);
 }
 
 std::vector<vec2> Core::getVerticesObj(Object& o)

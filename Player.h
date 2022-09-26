@@ -19,7 +19,8 @@ public:
 	};
 
 	Sprite playerSprite;
-	Direction dir;
+	Direction dir;  // направление движения игрока
+	Direction prevDir; // предыдущее направление
 private :
 	float speed;
 	bool isMoving;
@@ -36,7 +37,7 @@ public:
 	void moveDown(float time, View& view, int frame);
 	void checkRotation();
 	void setCollisionFlag(bool flag);
-	void collisionMovement();
+	void collisionMovement(float time);
 	
 	
 };
