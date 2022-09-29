@@ -45,21 +45,21 @@ void Player::moveLeft(float time, View& view, int frame)
 	
 	
 	if (!collision) {
-		prevDir = dir;
+		
 		dir = Direction::Left;
 	playerSprite.move(-time * speed, 0);
 	isMoving = true;
 	}
 	
-
+	prevDir = dir;
 	for (int i = 0; i < 6; i++)
 	{
 		if (frame == i)
 		{
-			playerSprite.setTextureRect(IntRect(382+i * 32, 44, 26, 42));
+			playerSprite.setTextureRect(IntRect(382+i * 32, 44, 30, 42));
 		}
 	}
-	std::cout << "Left" << std::endl;
+	
 }
 
 void Player::moveRight(float time, View& view, int frame)
@@ -67,20 +67,21 @@ void Player::moveRight(float time, View& view, int frame)
 	
 	
 	if (!collision) { 
-		prevDir = dir;
+		
 		dir = Direction::Right; 
 	
 	playerSprite.move(time * speed, 0);
 	isMoving = true;
 	}
+	prevDir = dir;
 	for (int i = 0 ; i < 6 ; i++)
 	{
 		if (frame == i)
 		{
-			playerSprite.setTextureRect(IntRect(i * 32,44 ,26 ,42));
+			playerSprite.setTextureRect(IntRect(i * 32,44 ,30 ,42));
 		}
 	}
-	std::cout << "Right" << std::endl;
+	
 }
 
 void Player::moveUp(float time, View& view, int frame)
@@ -88,12 +89,12 @@ void Player::moveUp(float time, View& view, int frame)
 	
 	
 	if (!collision) { 
-		prevDir = dir;
+		
 		dir = Direction::Up; 
 	playerSprite.move(0, -time * speed);
 	isMoving = true;
 	}
-	
+	prevDir = dir;
 	for (int i = 0; i < 6; i++)
 	{
 		if (frame == i)
@@ -101,7 +102,7 @@ void Player::moveUp(float time, View& view, int frame)
 			playerSprite.setTextureRect(IntRect(188 + i * 32, 44, 30, 42));
 		}
 	}
-	std::cout << "Up" << std::endl;
+	
 }
 
 void Player::moveDown(float time, View& view, int frame)
@@ -109,28 +110,30 @@ void Player::moveDown(float time, View& view, int frame)
 	
 	
 	if (!collision) { 
-		prevDir = dir;
+		
 		dir = Direction::Down; 
 	playerSprite.move(0, time * speed);
 	isMoving = true;
 	}
-	
+	prevDir = dir;
 	
 	for (int i = 0; i < 6; i++)
 	{
 		if (frame == i)
 		{
-			playerSprite.setTextureRect(IntRect(574 + i * 32, 44, 26, 42));
+			playerSprite.setTextureRect(IntRect(574 + i * 32, 44, 30, 42));
 		}
 	}
-	std::cout << "Down" << std::endl;
+	
 }
 
 void Player::isHeroMoving()
 {
+
 	if (!(Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::S)))
 	{
 		isMoving = false;
+		
 	}
 	
 }
@@ -140,8 +143,8 @@ void Player::checkRotation()
 	isHeroMoving();
 	if (!isMoving){
 
-		if (dir == Direction::Left) playerSprite.setTextureRect(IntRect(62, 0, 26, 42));
-		if (dir == Direction::Right) playerSprite.setTextureRect(IntRect(0, 0, 26, 42));
+		if (dir == Direction::Left) playerSprite.setTextureRect(IntRect(62, 0, 30, 42));
+		if (dir == Direction::Right) playerSprite.setTextureRect(IntRect(0, 0, 30, 42));
 		if (dir == Direction::Up) playerSprite.setTextureRect(IntRect(28, 0, 32, 42));
 		if (dir == Direction::Down) playerSprite.setTextureRect(IntRect(92, 0, 32, 42));
 	}
@@ -150,6 +153,7 @@ void Player::checkRotation()
 void Player::setCollisionFlag(bool flag)
 {
 	collision = flag;
+	
 }
 
 void Player::collisionMovement(float time)
@@ -157,24 +161,26 @@ void Player::collisionMovement(float time)
 	if (isMoving) {
 		if (dir == Left)
 		{
-			playerSprite.move(time * speed , 0);
+			playerSprite.move(time * speed, 0);
 		}
 		if (dir == Right)
 		{
-			playerSprite.move(-time * speed , 0);
+			playerSprite.move(-time * speed, 0);
 		}
-		
+
 		if (dir == Up)
 		{
-			if(prevDir == Right) playerSprite.move(-time * speed-5, 0);
-			playerSprite.move(0, time * speed );
+
+			playerSprite.move(0, time * speed);
 		}
 		if (dir == Down)
 		{
-			if (prevDir == Right) playerSprite.move(-time * speed -5, 0);
-			playerSprite.move(0, -time * speed );
+
+			playerSprite.move(0, -time * speed);
 		}
 	}
+	
+	
 	
 }
 

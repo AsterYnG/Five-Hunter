@@ -26,6 +26,13 @@ TileMap::TileMap()
                     player_coords.push_back(object);
                     }
                 }
+                if(objectLayer.getName() == "view")
+                {
+                    for (const auto &pos : objects)
+                    {
+                        cameraPositions.push_back(pos);
+                    }
+                }
             }
             else if (layer->getType() == tmx::Layer::Type::Tile)
             {

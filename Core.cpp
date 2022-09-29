@@ -28,7 +28,7 @@ Core::Core()
 	screen.createWindow(800, 600);
 	windowHandle = screen.getWindowHandle();
 	player.playerSprite.setPosition(map.player_coords[0].getPosition().x, map.player_coords[0].getPosition().y);
-	view.setCenter(player.getPlayerCoords());
+	
 }
 
 Core::~Core()
@@ -112,10 +112,12 @@ void Core::collission()
 		{
 			player.setCollisionFlag(true);
 			player.collisionMovement(time);
+			std::cout << 1 << std::endl;
 		}
 		else
 		{
 			player.setCollisionFlag(false);
+			
 		}
 		
 			
@@ -129,7 +131,9 @@ void Core::collission()
 
 void Core::viewRender()
 {
+	view.setSize(800,600);
 	view.setCenter(map.cameraPositions[0].getPosition().x , map.cameraPositions[0].getPosition().y);
+
 }
 
 std::vector<vec2> Core::getVerticesObj(Object& o)

@@ -163,7 +163,7 @@
   <object id="4" name="player" x="1740" y="123.15" width="32" height="37.3333"/>
  </objectgroup>
  <objectgroup id="14" name="view">
-  <object id="24" name="camera" class="view" x="1469.33" y="164.667" width="20" height="11.3333"/>
+  <object id="24" name="camera" class="view" x="1560.66" y="150.667" width="20" height="11.3333"/>
  </objectgroup>
  <objectgroup id="9" name="collision">
   <object id="8" name="wall_1" class="Walls" x="715.18" y="13.1515" width="1189.3" height="24.424"/>
