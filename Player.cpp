@@ -27,10 +27,8 @@ float Player::getSpeed()
 
 sf::Vector2f Player::getPlayerCoords()
 {
-	x = playerSprite.getPosition().x;
-	y = playerSprite.getPosition().y;
-	sf::Vector2f Coords(this->x , this->y);
-	return Coords;
+	
+	return playerSprite.getPosition();
 
 }
 
@@ -39,7 +37,7 @@ Player::Player():GameObject()
 	Init();
 }
 
-void Player::moveLeft(float time, View& view, int frame)
+void Player::moveLeft(float time,  int frame)
 {
 	isMoving = true;
 	
@@ -49,6 +47,7 @@ void Player::moveLeft(float time, View& view, int frame)
 		dir = Direction::Left;
 	playerSprite.move(-time * speed, 0);
 	isMoving = true;
+	
 	}
 	
 	prevDir = dir;
@@ -62,7 +61,7 @@ void Player::moveLeft(float time, View& view, int frame)
 	
 }
 
-void Player::moveRight(float time, View& view, int frame)
+void Player::moveRight(float time,  int frame)
 {
 	
 	
@@ -72,6 +71,7 @@ void Player::moveRight(float time, View& view, int frame)
 	
 	playerSprite.move(time * speed, 0);
 	isMoving = true;
+	
 	}
 	prevDir = dir;
 	for (int i = 0 ; i < 6 ; i++)
@@ -84,7 +84,7 @@ void Player::moveRight(float time, View& view, int frame)
 	
 }
 
-void Player::moveUp(float time, View& view, int frame)
+void Player::moveUp(float time,  int frame)
 {
 	
 	
@@ -93,6 +93,7 @@ void Player::moveUp(float time, View& view, int frame)
 		dir = Direction::Up; 
 	playerSprite.move(0, -time * speed);
 	isMoving = true;
+	
 	}
 	prevDir = dir;
 	for (int i = 0; i < 6; i++)
@@ -105,7 +106,7 @@ void Player::moveUp(float time, View& view, int frame)
 	
 }
 
-void Player::moveDown(float time, View& view, int frame)
+void Player::moveDown(float time,  int frame)
 {
 	
 	
@@ -114,6 +115,7 @@ void Player::moveDown(float time, View& view, int frame)
 		dir = Direction::Down; 
 	playerSprite.move(0, time * speed);
 	isMoving = true;
+	
 	}
 	prevDir = dir;
 	
@@ -136,10 +138,12 @@ void Player::isHeroMoving()
 		
 	}
 	
+	
 }
 
 void Player::checkRotation()
 {
+	
 	isHeroMoving();
 	if (!isMoving){
 
@@ -161,22 +165,22 @@ void Player::collisionMovement(float time)
 	if (isMoving) {
 		if (dir == Left)
 		{
-			playerSprite.move(time * speed, 0);
+			playerSprite.move(time * speed+0.01, 0);
 		}
 		if (dir == Right)
 		{
-			playerSprite.move(-time * speed, 0);
+			playerSprite.move(-time * speed-0.01, 0);
 		}
 
 		if (dir == Up)
 		{
 
-			playerSprite.move(0, time * speed);
+			playerSprite.move(0, time * speed+ 0.01);
 		}
 		if (dir == Down)
 		{
 
-			playerSprite.move(0, -time * speed);
+			playerSprite.move(0, -time * speed- 0.01);
 		}
 	}
 	
@@ -184,6 +188,10 @@ void Player::collisionMovement(float time)
 	
 }
 
+int Player::getDir()
+{
+	return dir;
+}
 
 
 

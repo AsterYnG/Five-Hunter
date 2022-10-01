@@ -26,7 +26,7 @@ TileMap::TileMap()
                     player_coords.push_back(object);
                     }
                 }
-                if(objectLayer.getName() == "view")
+                if(objectLayer.getName() == "camera")
                 {
                     for (const auto &pos : objects)
                     {

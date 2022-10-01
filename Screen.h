@@ -18,7 +18,6 @@ public :
 	~Screen();
 	RenderWindow* getWindowHandle();
 	void createWindow(int width, int height);
-	void changeView(View &view);
 	void updateTime();
 	float getTime();
 	void setFrame(float time);

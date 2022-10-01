@@ -26,18 +26,21 @@ private :
 	bool isMoving;
 	bool collision;
 	void isHeroMoving();
+	
 public:
 	void Init() override;
 	float getSpeed();
 	sf::Vector2f getPlayerCoords();
 	Player();
-	void moveLeft(float time , View & view , int frame);
-	void moveRight(float time, View& view, int frame);
-	void moveUp(float time, View& view, int frame);
-	void moveDown(float time, View& view, int frame);
+	void moveLeft(float time ,  int frame);
+	void moveRight(float time,  int frame);
+	void moveUp(float time,  int frame);
+	void moveDown(float time,  int frame);
 	void checkRotation();
 	void setCollisionFlag(bool flag);
 	void collisionMovement(float time);
+	int getDir();
+	
 	
 	
 };

@@ -29,22 +29,7 @@ void Screen::createWindow(int width, int height)
 
 }
 
-void Screen::changeView(View& view)
-{
-	if (Keyboard::isKeyPressed(Keyboard::P))
-	{
-		view.zoom(1.0001);
-	}
-	if (Keyboard::isKeyPressed(Keyboard::I))
-	{
-		view.zoom(0.998991);
-	}
-	if (Keyboard::isKeyPressed(Keyboard::H))
-	{
-		view.setSize(200, 150);
-	}
-	window->setView(view);
-}
+
 
 void Screen::updateTime()
 {

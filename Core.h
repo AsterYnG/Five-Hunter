@@ -2,6 +2,7 @@
 #include "SFMLOrthogonalLayer.hpp"
 #include "Screen.h"
 #include "GJK.h"
+#include "Camera.h"
 class Core
 {
 private:
@@ -10,7 +11,7 @@ private:
 	void moveEvent(); // Movement logic
 	void collission();
 	
-	void viewRender(); // set camera position etc.
+	
 
 	std::vector<vec2> getVerticesObj(Object& o);
 	std::vector<vec2> getVerticesPl(sf::Sprite& p);
@@ -22,7 +23,7 @@ private :
 	Screen screen; // Объект экрана
 	Player player; // объект игрока
 	TileMap map; // объект карты
-	sf::View view; // вид
+	Camera view;// вид
 	RenderWindow* windowHandle; // дескриптор окна типа
 	
 };

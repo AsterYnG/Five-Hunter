@@ -13,8 +13,8 @@ void Core::Render()
 		screen.updateTime();
 		/*player.moveUp(screen.getTime() , view , screen.getFrame());*/
 		logic();
-		viewRender();
-		screen.changeView(view);
+		
+		view.updateView(windowHandle);
 		
 		windowHandle->clear();
 		draw();
@@ -28,6 +28,7 @@ Core::Core()
 	screen.createWindow(800, 600);
 	windowHandle = screen.getWindowHandle();
 	player.playerSprite.setPosition(map.player_coords[0].getPosition().x, map.player_coords[0].getPosition().y);
+	view.init(map.player_coords[0]);
 	
 }
 
@@ -54,7 +55,7 @@ void Core::logic()
 {
 	collission();
 	moveEvent();
-	
+	view.renderView(player.getPlayerCoords(),player.getDir() );
 }
 
 void Core::moveEvent()
@@ -67,28 +68,28 @@ void Core::moveEvent()
 	{
 		
 		if (!directionIsUsed) {
-			player.moveUp(time, view, screen.getFrame());
+			player.moveUp(time,  screen.getFrame());
 			directionIsUsed = true;
 		}
 	}
 	if (Keyboard::isKeyPressed(Keyboard::S))
 	{
 		if (!directionIsUsed) {
-			player.moveDown(time, view, screen.getFrame());
+			player.moveDown(time,  screen.getFrame());
 			directionIsUsed = true;
 		}
 	}
 	if (Keyboard::isKeyPressed(Keyboard::D))
 	{
 		if (!directionIsUsed) {
-			player.moveRight(time, view, screen.getFrame());
+			player.moveRight(time,  screen.getFrame());
 			directionIsUsed = true;
 		}
 	}
 	if (Keyboard::isKeyPressed(Keyboard::A))
 	{
 		if (!directionIsUsed) {
-			player.moveLeft(time, view, screen.getFrame());
+			player.moveLeft(time,  screen.getFrame());
 			directionIsUsed = true;
 		}
 	}
@@ -99,11 +100,11 @@ void Core::moveEvent()
 void Core::collission()
 {
 	auto time = screen.getTime();
+	auto playerVertices = getVerticesPl(player.playerSprite);
 	for (auto el : map.coll)
 	{
 		
 		auto objectVertices = getVerticesObj(el);
-		auto playerVertices = getVerticesPl(player.playerSprite);
 
 
 		
@@ -112,29 +113,30 @@ void Core::collission()
 		{
 			player.setCollisionFlag(true);
 			player.collisionMovement(time);
-			std::cout << 1 << std::endl;
+			view.setCollisionFlag(true);
 		}
 		else
 		{
 			player.setCollisionFlag(false);
-			
 		}
-		
-			
-		
-		
+	}
+	for (auto cam : map.cameraPositions)
+	{
+		auto cameraVertices = getVerticesObj(cam);
+		if(vec2::gjk(playerVertices , cameraVertices))
+		{
+			for (int i = 1 ; i < 7 ; i ++)
+			{
+				if (std::stoi(cam.getName()) == i) view.setCameraPreSet(i);
+			}
+		}
 	}
 			
 }
 
 
 
-void Core::viewRender()
-{
-	view.setSize(800,600);
-	view.setCenter(map.cameraPositions[0].getPosition().x , map.cameraPositions[0].getPosition().y);
 
-}
 
 std::vector<vec2> Core::getVerticesObj(Object& o)
 {
