@@ -10,7 +10,7 @@ private:
 	void logic();
 	void moveEvent(); // Movement logic
 	void collission();
-	
+	void fullscreenMode(sf::Event &event);
 	
 
 	std::vector<vec2> getVerticesObj(Object& o);

@@ -10,7 +10,9 @@ private:
 	bool notMoving;
 	int dir;
 	int cameraPreSet;
+	bool fullscreen;
 	int width, height;
+	
 public:
 	Camera();
 	void updateView(RenderWindow* window);
@@ -22,5 +24,6 @@ public:
 private:
 	void moveRender(int dir);
 	bool borderRender(sf::Vector2f coords);
+	void checkFullscreen();
 };
 

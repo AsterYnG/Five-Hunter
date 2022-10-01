@@ -9,6 +9,7 @@ void Core::Render()
 		while (windowHandle->pollEvent(event))
 		{
 			if (event.type == Event::Closed) windowHandle->close();
+			fullscreenMode(event);
 		}
 		screen.updateTime();
 		/*player.moveUp(screen.getTime() , view , screen.getFrame());*/
@@ -132,6 +133,23 @@ void Core::collission()
 		}
 	}
 			
+}
+
+void Core::fullscreenMode(sf::Event& event)
+{
+	if (event.type == Event::KeyPressed)
+	{
+		if(event.key.code == Keyboard::F)
+		{
+			windowHandle->create(VideoMode(1920, 1080), "Five&Hunter", Style::Fullscreen);
+			view.changeSize(1920,1080);
+		}
+		if(event.key.code == Keyboard::Escape)
+		{
+			windowHandle->create(VideoMode(800, 600), "Five&Hunter");
+			view.changeSize(400, 300);
+		}
+	}
 }
 
 
