@@ -10,6 +10,7 @@ void Core::Render()
 		{
 			if (event.type == Event::Closed) windowHandle->close();
 			fullscreenMode(event);
+			resize(event);
 		}
 		screen.updateTime();
 		/*player.moveUp(screen.getTime() , view , screen.getFrame());*/
@@ -147,8 +148,17 @@ void Core::fullscreenMode(sf::Event& event)
 		if(event.key.code == Keyboard::Escape)
 		{
 			windowHandle->create(VideoMode(800, 600), "Five&Hunter");
-			view.changeSize(400, 300);
+			view.changeSize(800, 600);
 		}
+	}
+}
+
+void Core::resize(sf::Event& event)
+{
+	if (event.type == Event::Resized)
+	{
+		view.changeSize(event.size.width, event.size.height);
+		windowHandle->setSize(sf::Vector2u(event.size.width, event.size.height));
 	}
 }
 

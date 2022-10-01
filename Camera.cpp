@@ -50,9 +50,9 @@ void Camera::changeSize(int width, int height)
 		this->height = 270;
 	}
 	else {
+		this->width = width / 2;
+		this->height = height / 2;
 		
-		this->width = 400;
-		this->height = 300;
 	}
 	view.setSize(this->width, this->height);
 	checkFullscreen();

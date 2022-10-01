@@ -11,7 +11,7 @@ private:
 	void moveEvent(); // Movement logic
 	void collission();
 	void fullscreenMode(sf::Event &event);
-	
+	void resize(sf::Event& event);
 
 	std::vector<vec2> getVerticesObj(Object& o);
 	std::vector<vec2> getVerticesPl(sf::Sprite& p);
