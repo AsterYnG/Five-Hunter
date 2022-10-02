@@ -88,8 +88,12 @@ bool Camera::borderRender(sf::Vector2f coords)
 				}
 				else
 				{
+					if(!notMoving)
+					{
 					view.setCenter(view.getCenter().x, coords.y);
 					return 0;
+					}
+					else return 0;
 				}
 			}
 			if (coords.x <= 720 + width / 2)
@@ -100,18 +104,30 @@ bool Camera::borderRender(sf::Vector2f coords)
 				}
 				else
 				{
-					view.setCenter(view.getCenter().x, coords.y);
-					return 0;
+					if (!notMoving)
+					{
+						view.setCenter(view.getCenter().x, coords.y);
+						return 0;
+					}
+					else return 0;
 				}
 			}
 			if (coords.y <= height / 2) {
-				view.setCenter(coords.x, view.getCenter().y);
-				return 0;
+				if (!notMoving)
+				{
+					view.setCenter(coords.x, view.getCenter().y);
+					return 0;
+				}
+				else return 0;
 			}
 			if (coords.y >= 608 - height / 2)
 			{
-				view.setCenter(coords.x, view.getCenter().y);
-				return 0;
+				if (!notMoving)
+				{
+					view.setCenter(coords.x, view.getCenter().y);
+					return 0;
+				}
+				else return 0;
 			}
 		}
 
@@ -126,19 +142,33 @@ bool Camera::borderRender(sf::Vector2f coords)
 			{
 				if (coords.y <= 260 + height / 2) return 0;
 				if (coords.y >= 608 - height / 2) return 0;
-				view.setCenter(view.getCenter().x, coords.y);
-				return 0;
+				if (!notMoving)
+				{
+					view.setCenter(view.getCenter().x, coords.y);
+					return 0;
+				}
+				else return 0;
 
 			}
 			if (coords.y <= 260 + height / 2)
 			{
-				view.setCenter(coords.x, view.getCenter().y);
-				return 0;
+				if (!notMoving)
+				{
+					view.setCenter(coords.x, view.getCenter().y);
+					return 0;
+
+				}
+				else return 0;
 			}
 			if (coords.y >= 608 - height / 2)
 			{
-				view.setCenter(coords.x, view.getCenter().y);
-				return 0;
+				if (!notMoving)
+				{
+					view.setCenter(coords.x, view.getCenter().y);
+					return 0;
+
+				}
+				else return 0;
 			}
 
 		}
@@ -154,18 +184,30 @@ bool Camera::borderRender(sf::Vector2f coords)
 			{
 				if (coords.y >= 672 - height / 2) return 0;
 				if (coords.y <= 256 + height / 2) return 0;
-				view.setCenter(view.getCenter().x, coords.y);
-				return 0;
+				if (!notMoving)
+				{
+					view.setCenter(view.getCenter().x, coords.y);
+					return 0;
+				}
+				else return 0;
 			}
 			if (coords.y >= 672 - height / 2)
 			{
-				view.setCenter(coords.x, view.getCenter().y);
-				return 0;
+				if (!notMoving)
+				{
+					view.setCenter(coords.x, view.getCenter().y);
+					return 0;
+				}
+				else return 0;
 			}
 			if (coords.y <= 256 + height / 2)
 			{
-				view.setCenter(coords.x, view.getCenter().y);
-				return 0;
+				if (!notMoving)
+				{
+					view.setCenter(coords.x, view.getCenter().y);
+					return 0;
+				}
+				else return 0;
 			}
 		}
 		return 1;
@@ -182,18 +224,30 @@ bool Camera::borderRender(sf::Vector2f coords)
 				{
 					if (coords.x <= 992 + width / 4) return 0;
 					if (coords.x >= 1248 - width / 4) return 0;
-					view.setCenter(coords.x, view.getCenter().y);
-					return 0;
+					if (!notMoving)
+					{
+						view.setCenter(coords.x, view.getCenter().y);
+						return 0;
+					}
+					else return 0;
 				}
 				if (coords.x <= 992 + width / 4)
 				{
-					view.setCenter(view.getCenter().x, coords.y);
-					return 0;
+					if (!notMoving)
+					{
+						view.setCenter(view.getCenter().x, coords.y);
+						return 0;
+					}
+					else return 0;
 				}
 				if (coords.x >= 1248 - width / 4)
 				{
-					view.setCenter(view.getCenter().x, coords.y);
-					return 0;
+					if (!notMoving)
+					{
+						view.setCenter(view.getCenter().x, coords.y);
+						return 0;
+					}
+					else return 0;
 				}
 			}
 			return 1;

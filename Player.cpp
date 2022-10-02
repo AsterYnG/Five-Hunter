@@ -147,8 +147,8 @@ void Player::checkRotation()
 	isHeroMoving();
 	if (!isMoving){
 
-		if (dir == Direction::Left) playerSprite.setTextureRect(IntRect(62, 0, 30, 42));
-		if (dir == Direction::Right) playerSprite.setTextureRect(IntRect(0, 0, 30, 42));
+		if (dir == Direction::Left) playerSprite.setTextureRect(IntRect(62, 0, 32, 42));
+		if (dir == Direction::Right) playerSprite.setTextureRect(IntRect(0, 0, 32, 42));
 		if (dir == Direction::Up) playerSprite.setTextureRect(IntRect(28, 0, 32, 42));
 		if (dir == Direction::Down) playerSprite.setTextureRect(IntRect(92, 0, 32, 42));
 	}
@@ -165,22 +165,22 @@ void Player::collisionMovement(float time)
 	if (isMoving) {
 		if (dir == Left)
 		{
-			playerSprite.move(time * speed+0.01, 0);
+			playerSprite.move(time * speed + 0.02, 0);
 		}
 		if (dir == Right)
 		{
-			playerSprite.move(-time * speed-0.01, 0);
+			playerSprite.move(-time * speed - 0.02, 0);
 		}
 
 		if (dir == Up)
 		{
 
-			playerSprite.move(0, time * speed+ 0.01);
+			playerSprite.move(0, time * speed+ 0.02);
 		}
 		if (dir == Down)
 		{
 
-			playerSprite.move(0, -time * speed- 0.01);
+			playerSprite.move(0, -time * speed- 0.02);
 		}
 	}
 	
