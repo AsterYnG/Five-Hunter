@@ -147,10 +147,10 @@ void Player::checkRotation()
 	isHeroMoving();
 	if (!isMoving){
 
-		if (dir == Direction::Left) playerSprite.setTextureRect(IntRect(62, 0, 32, 42));
-		if (dir == Direction::Right) playerSprite.setTextureRect(IntRect(0, 0, 32, 42));
-		if (dir == Direction::Up) playerSprite.setTextureRect(IntRect(28, 0, 32, 42));
-		if (dir == Direction::Down) playerSprite.setTextureRect(IntRect(92, 0, 32, 42));
+		if (dir == Direction::Left) playerSprite.setTextureRect(IntRect(62, 0, 30, 42));
+		if (dir == Direction::Right) playerSprite.setTextureRect(IntRect(0, 0, 30, 42));
+		if (dir == Direction::Up) playerSprite.setTextureRect(IntRect(28, 0, 30, 42));
+		if (dir == Direction::Down) playerSprite.setTextureRect(IntRect(92, 0, 30, 42));
 	}
 }
 

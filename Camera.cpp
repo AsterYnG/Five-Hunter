@@ -7,6 +7,7 @@ Camera::Camera()
 
 void Camera::updateView(RenderWindow* window)
 {
+	
 	window->setView(view);
 }
 
@@ -62,6 +63,15 @@ void Camera::setCameraPreSet(int i)
 {
 	cameraPreSet = i;
 }
+
+View& Camera::getView()
+{
+	return view;
+}
+
+
+
+
 
 void Camera::moveRender(int dir)
 {
@@ -136,42 +146,44 @@ bool Camera::borderRender(sf::Vector2f coords)
 	if ( cameraPreSet == 2)
 	{ 
 		
-		if (coords.x <= 720 + width / 2 || coords.y <= 260 + height/2 || coords.y >=608 - height/2)
-		{
-			if(coords.x <= 720 + width / 2)
+		
+			if (coords.x <= 720 + width / 2 || coords.y <= 260 + height / 2 || coords.y >= 608 - height / 2)
 			{
-				if (coords.y <= 260 + height / 2) return 0;
-				if (coords.y >= 608 - height / 2) return 0;
-				if (!notMoving)
+				if (coords.x <= 720 + width / 2)
 				{
-					view.setCenter(view.getCenter().x, coords.y);
-					return 0;
-				}
-				else return 0;
-
-			}
-			if (coords.y <= 260 + height / 2)
-			{
-				if (!notMoving)
-				{
-					view.setCenter(coords.x, view.getCenter().y);
-					return 0;
+					if (coords.y <= 260 + height / 2) return 0;
+					if (coords.y >= 608 - height / 2) return 0;
+					if (!notMoving)
+					{
+						view.setCenter(view.getCenter().x, coords.y);
+						return 0;
+					}
+					else return 0;
 
 				}
-				else return 0;
-			}
-			if (coords.y >= 608 - height / 2)
-			{
-				if (!notMoving)
+				if (coords.y <= 260 + height / 2)
 				{
-					view.setCenter(coords.x, view.getCenter().y);
-					return 0;
+					if (!notMoving)
+					{
+						view.setCenter(coords.x, view.getCenter().y);
+						return 0;
 
+					}
+					else return 0;
 				}
-				else return 0;
-			}
+				if (coords.y >= 608 - height / 2)
+				{
+					if (!notMoving)
+					{
+						view.setCenter(coords.x, view.getCenter().y);
+						return 0;
 
-		}
+					}
+					else return 0;
+				}
+
+			}
+		
 		return 1;
 	}
 

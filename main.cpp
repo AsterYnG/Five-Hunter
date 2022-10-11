@@ -5,6 +5,7 @@
 
 int main ()
 {
+	
 	Core core;
 	core.Render();
 	

@@ -25,7 +25,7 @@ RenderWindow* Screen::getWindowHandle()
 
 void Screen::createWindow(int width, int height)
 {
-	window->create(VideoMode(width, height), " Debug.chlen");
+	window->create(VideoMode(width, height),   " Debug.chlen" );
 
 }
 

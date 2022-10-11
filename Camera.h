@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <tmxlite/Object.hpp>
+
 using namespace sf;
 class Camera
 {
@@ -21,6 +22,8 @@ public:
 	void init(tmx::Object player_coords );
 	void changeSize(int width , int height);
 	void setCameraPreSet(int i);
+	View& getView();
+	
 private:
 	void moveRender(int dir);
 	bool borderRender(sf::Vector2f coords);
