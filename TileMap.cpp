@@ -19,12 +19,20 @@ TileMap::TileMap()
                         coll.push_back(object);
                     }
                 }
-                else
+                if (objectLayer.getName() == "player")
                 {
                     for (const auto& object : objects)
                     {
                     player_coords.push_back(object);
                     }
+                }
+                if(objectLayer.getName() == "money")
+                {
+                     for(const auto& object: objects)
+                     {
+                         coins.push_back(object);
+                     }
+                     cash.setParametres(coins);
                 }
                 if(objectLayer.getName() == "camera")
                 {
@@ -55,10 +63,20 @@ std::vector<MapLayer*> TileMap::getLayers()
     return this->layers;
 }
 
+std::vector<Object>& TileMap::getGameObjects()
+{
+    return coins;
+}
+
 TileMap::~TileMap()
 {
     for (int i = 0 ; i < layers.size() ; i ++)
     {
         delete layers[i];
     }
+}
+
+Money* TileMap::getCoins()
+{
+    return &cash;
 }

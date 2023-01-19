@@ -22,7 +22,5 @@ public :
 	float getTime();
 	void setFrame(float time);
 	int getFrame();
-private:
-	
 };
 

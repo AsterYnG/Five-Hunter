@@ -4,7 +4,7 @@
 
 void Player::Init()
 {
-	
+	money = 0;
 	if (tex.loadFromFile("assets/Image/sprite.png"))
 	{
 		
@@ -165,22 +165,22 @@ void Player::collisionMovement(float time)
 	if (isMoving) {
 		if (dir == Left)
 		{
-			playerSprite.move(time * speed + 0.02, 0);
+			playerSprite.move(time * speed , 0);
 		}
 		if (dir == Right)
 		{
-			playerSprite.move(-time * speed - 0.02, 0);
+			playerSprite.move(-time * speed , 0);
 		}
 
 		if (dir == Up)
 		{
 
-			playerSprite.move(0, time * speed+ 0.02);
+			playerSprite.move(0, time * speed);
 		}
 		if (dir == Down)
 		{
 
-			playerSprite.move(0, -time * speed- 0.02);
+			playerSprite.move(0, -time * speed);
 		}
 	}
 	
@@ -191,6 +191,25 @@ void Player::collisionMovement(float time)
 int Player::getDir()
 {
 	return dir;
+}
+
+bool Player::pickUp(bool isAvailable)
+{
+	if (isAvailable)
+	{
+		if (Keyboard::isKeyPressed(Keyboard::E))
+		{
+			money += 10;
+			return true;
+		}
+		else return false;
+	}
+	else return false;
+}
+
+int Player::getCashAmount()
+{
+	return money;
 }
 
 

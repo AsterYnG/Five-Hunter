@@ -2,6 +2,7 @@
 
 void Core::Render()
 {
+	
 	int menuFrame = 0;
 	Event event;
 	while (windowHandle->isOpen())
@@ -53,19 +54,13 @@ Core::~Core()
 
 void Core::draw()
 {
-	
-	
-		int i = 0;
-		for (auto el : map.getLayers())
-		{
-
-			windowHandle->draw(*el);
-			i++;
-
-		}
-		windowHandle->draw(player.playerSprite);
-		gameIn.drawInterface(windowHandle, screen.getTime());
-	
+	for (auto el : map.getLayers())
+	{
+		windowHandle->draw(*el);
+	}	
+	map.getCoins()->draw(windowHandle);
+	windowHandle->draw(player.playerSprite);
+	gameIn.drawInterface(windowHandle, screen.getTime());
 }
 
 void Core::logic()
@@ -73,6 +68,8 @@ void Core::logic()
 	collission();
 	moveEvent();
 	view.renderView(player.getPlayerCoords(),player.getDir() );
+	pickCoin();
+	
 }
 
 void Core::moveEvent()
@@ -155,11 +152,7 @@ void Core::fullscreenMode(sf::Event& event)
 {
 	if (event.type == Event::KeyPressed)
 	{
-		if(event.key.code == Keyboard::F)
-		{
-			windowHandle->create(VideoMode(1920, 1080), "Five&Hunter", Style::Fullscreen);
-			view.changeSize(1920,1080);
-		}
+		
 		if(event.key.code == Keyboard::Escape)
 		{
 			windowHandle->create(VideoMode(800, 600), "Five&Hunter");
@@ -178,16 +171,14 @@ void Core::resize(sf::Event& event)
 	}
 }
 
-void Core::start(sf::Event& event)
+void Core::pickCoin()
 {
-	if (event.type == Event::KeyPressed)
-	{
-		if(event.key.code == Keyboard::P)
-		{
-			gameIn.setStartFlag(1);
-		}
-	}
+	map.cash.isPickedUp(player.pickUp(map.cash.isAvailableToPick(player.getPlayerCoords())));
+	gameIn.setCounter(player.getCashAmount());
+
 }
+
+
 
 int Core::menuEvent(sf::Event& event)
 {

@@ -13,7 +13,7 @@ private:
 	void collission();
 	void fullscreenMode(sf::Event &event);
 	void resize(sf::Event& event);
-	void start(sf::Event& event);
+	void pickCoin();
 	int menuEvent(sf::Event& event);
 	void updateInterface(View& view);
 	std::vector<vec2> getVerticesObj(Object& o);

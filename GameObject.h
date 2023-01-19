@@ -8,10 +8,10 @@ protected:
 
 	unsigned int x;
 	unsigned int y;
-	Texture tex;
+	
+
 public:
 	virtual void Init() = 0;
-	GameObject();
 
 };
 

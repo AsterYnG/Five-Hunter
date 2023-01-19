@@ -4,9 +4,6 @@
 #include "GameObject.h"
 using namespace sf;
 
-
-
-
 class Player : public GameObject
 {
 public:
@@ -26,7 +23,8 @@ private :
 	bool isMoving;
 	bool collision;
 	void isHeroMoving();
-	
+	sf::Texture tex;
+	int money;
 public:
 	void Init() override;
 	float getSpeed();
@@ -40,8 +38,7 @@ public:
 	void setCollisionFlag(bool flag);
 	void collisionMovement(float time);
 	int getDir();
-	
-	
-	
+	bool pickUp(bool isAvailable);
+	int getCashAmount();
 };
 

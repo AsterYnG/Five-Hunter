@@ -14,13 +14,14 @@ private :
 	sf::String str; // message
 	sf::String temp; // temperorary string
 	bool start; // start to draw text
-	std::vector<Texture> tex; // two textures : Menu and Ruble icon
-	std::vector<Sprite> sprite; // two sprites : MEnu and Ruble icon
+	std::vector<Texture> tex; // Textures
+	std::vector<Sprite> sprite; // Sprites
 	std::vector<sf::RectangleShape> borders; // array of borders
+	bool showText; // Show text flag 1 - yes 2 - no
 	
 public:
 	Interface();
-	void setStartFlag(bool start);
+	void setCounter(int money);
 	void update( View& view); // update interface
 	void drawInterface(RenderWindow* window, float time); // draw interface
 	void drawMenu(RenderWindow* window,int frame); // draw menu function
@@ -31,7 +32,7 @@ private:
 	void setBordersPos(View& view);
 	void initSprites();
 	void initText();
+	void closeText();
 	
-
 };
 
